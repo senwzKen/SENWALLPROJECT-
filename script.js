@@ -322,7 +322,26 @@ const templates = [
     padding: 12px;
     width: 100%;
 }`
-    }
+    },
+   {
+      id: 11,
+      name: "content Form",
+      category: "form",
+      description: "scrape javascript, kotak bergerak",
+      js: `<div id="kotak" style="width:50px;height:50px;background:blue;position:absolute;"></div>
+
+<script>
+const kotak = document.getElementById('kotak');
+let pos = 0;
+function gerak() {
+  pos += 2;
+  kotak.style.left = pos + 'px';
+  if (pos < 300) requestAnimationFrame(gerak);
+}
+gerak();
+</script>`
+   }
+
 ];
 
 
