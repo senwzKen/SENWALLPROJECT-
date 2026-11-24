@@ -340,7 +340,7 @@ function gerak() {
 }
 gerak();
 </script>`
-   }
+   },
 
 ];
 
