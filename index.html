@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101416">
+    <meta name="description" content="SENWALLPROJECT - Website builder untuk membuat HTML, CSS dan JavaScript dengan mudah.">
+    <title>SENWALLPROJECT - Code Builder</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">S</div>
+            <div class="brand-info">
+                <h2>SENWALLPROJECT</h2>
+                <span>CODE BUILDER</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar">×</button>
+        </div>
+
+        <div class="sidebar-content">
+
+            <p class="nav-label">MAIN MENU</p>
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>⌂</span> Dashboard
+            </button>
+
+            <button class="nav-item" data-page="templates">
+                <span>▦</span> Templates
+            </button>
+
+            <button class="nav-item" data-page="editor">
+                <span>⌘</span> Code Editor
+            </button>
+
+            <button class="nav-item" data-page="preview">
+                <span>◫</span> Live Preview
+            </button>
+
+            <p class="nav-label">WORKSPACE</p>
+
+            <button class="nav-item" data-page="components">
+                <span>◈</span> Components
+            </button>
+
+            <button class="nav-item" data-page="projects">
+                <span>▤</span> My Projects
+            </button>
+
+            <button class="nav-item" data-page="settings">
+                <span>⚙</span> Settings
+            </button>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="status-indicator"></div>
+            <div>
+                <strong>Offline Mode</strong>
+                <small>Ready to build</small>
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+
+                <div>
+                    <h3 id="pageTitle">Dashboard</h3>
+                    <p>Welcome to SENWALLPROJECT</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="system-status">
+                    <span></span> System Ready
+                </div>
+
+                <button class="profile-button">SP</button>
+            </div>
+
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="page active" id="dashboard">
+
+            <div class="welcome-section">
+                <div>
+                    <span class="section-tag">YOUR CREATIVE WORKSPACE</span>
+                    <h1>Build Something <span>Amazing.</span></h1>
+                    <p>
+                        Buat website, desain komponen dan hasilkan
+                        kode HTML, CSS serta JavaScript dengan mudah.
+                    </p>
+
+                    <button class="primary-button" data-goto="templates">
+                        + Create New Project
+                    </button>
+                </div>
+
+                <div class="welcome-decoration">
+                    <div class="decoration-box">
+                        <span>&lt;/&gt;</span>
+                        <small>CODE YOUR IDEAS</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATISTICS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>Total Projects</span>
+                    <h2 id="totalProjects">0</h2>
+                    <small>Saved locally</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Available Templates</span>
+                    <h2 id="totalTemplates">0</h2>
+                    <small>Ready to use</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Code Languages</span>
+                    <h2>03</h2>
+                    <small>HTML CSS JS</small>
+                </div>
+
+            </div>
+
+            <!-- QUICK ACTION -->
+            <div class="section-heading">
+                <div>
+                    <h2>Quick Start</h2>
+                    <p>Mulai membuat komponen website.</p>
+                </div>
+            </div>
+
+            <div class="quick-grid">
+
+                <div class="quick-card" data-goto="templates">
+                    <div class="quick-icon">▦</div>
+                    <h3>Use Template</h3>
+                    <p>Gunakan komponen siap pakai.</p>
+                    <span>Explore →</span>
+                </div>
+
+                <div class="quick-card" data-goto="editor">
+                    <div class="quick-icon">⌘</div>
+                    <h3>Custom Editor</h3>
+                    <p>Buat desain sesuai keinginan.</p>
+                    <span>Start Editing →</span>
+                </div>
+
+                <div class="quick-card" data-goto="preview">
+                    <div class="quick-icon">◫</div>
+                    <h3>Live Preview</h3>
+                    <p>Lihat hasil desain website.</p>
+                    <span>Open Preview →</span>
+                </div>
+
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h2>Recent Projects</h2>
+                    <p>Proyek yang terakhir disimpan.</p>
+                </div>
+            </div>
+
+            <div class="recent-projects" id="recentProjects">
+                <div class="empty-state">
+                    <span>▤</span>
+                    <h3>Belum ada proyek</h3>
+                    <p>Proyek kamu akan muncul di sini.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TEMPLATES -->
+        <section class="page" id="templates">
+
+            <div class="page-heading">
+                <span class="section-tag">TEMPLATE LIBRARY</span>
+                <h1>Explore Templates</h1>
+                <p>Pilih komponen yang ingin kamu buat.</p>
+            </div>
+
+            <div class="template-toolbar">
+
+                <input
+                    type="search"
+                    id="templateSearch"
+                    placeholder="Cari template..."
+                >
+
+                <select id="templateCategory">
+                    <option value="all">Semua kategori</option>
+                    <option value="layout">Layout</option>
+                    <option value="form">Form</option>
+                    <option value="card">Card</option>
+                    <option value="navigation">Navigation</option>
+                    <option value="other">Other</option>
+                </select>
+
+            </div>
+
+            <div class="category-list">
+                <button class="category-btn active" data-category="all">
+                    All
+                </button>
+                <button class="category-btn" data-category="layout">
+                    Layout
+                </button>
+                <button class="category-btn" data-category="form">
+                    Form
+                </button>
+                <button class="category-btn" data-category="card">
+                    Card
+                </button>
+                <button class="category-btn" data-category="navigation">
+                    Navigation
+                </button>
+            </div>
+
+            <div class="template-grid" id="templateGrid">
+
+                <!-- Template dibuat melalui JavaScript -->
+
+            </div>
+
+        </section>
+
+        <!-- CODE EDITOR -->
+        <section class="page" id="editor">
+
+            <div class="page-heading">
+                <span class="section-tag">CODE WORKSPACE</span>
+                <h1>Code Editor</h1>
+                <p>Atur kode HTML, CSS dan JavaScript.</p>
+            </div>
+
+            <div class="editor-toolbar">
+
+                <input
+                    type="text"
+                    id="projectName"
+                    placeholder="Nama proyek..."
+                    value="My New Project"
+                >
+
+                <div class="editor-actions">
+                    <button class="secondary-button" id="resetCode">
+                        Reset
+                    </button>
+
+                    <button class="primary-button" id="saveProject">
+                        Save Project
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="editor-tabs">
+
+                <button class="editor-tab active" data-editor="html">
+                    HTML
+                </button>
+
+                <button class="editor-tab" data-editor="css">
+                    CSS
+                </button>
+
+                <button class="editor-tab" data-editor="javascript">
+                    JavaScript
+                </button>
+
+            </div>
+
+            <div class="editor-container">
+
+                <div class="editor-panel active" id="htmlPanel">
+                    <textarea
+                        id="htmlCode"
+                        spellcheck="false"
+                        placeholder="Tulis kode HTML di sini..."
+                    ></textarea>
+                </div>
+
+                <div class="editor-panel" id="cssPanel">
+                    <textarea
+                        id="cssCode"
+                        spellcheck="false"
+                        placeholder="Tulis kode CSS di sini..."
+                    ></textarea>
+                </div>
+
+                <div class="editor-panel" id="javascriptPanel">
+                    <textarea
+                        id="jsCode"
+                        spellcheck="false"
+                        placeholder="Tulis kode JavaScript di sini..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+            <div class="editor-footer">
+                <span id="editorStatus">Ready</span>
+                <button class="secondary-button" id="copyCurrentCode">
+                    Copy Current Code
+                </button>
+            </div>
+
+        </section>
+
+        <!-- LIVE PREVIEW -->
+        <section class="page" id="preview">
+
+            <div class="page-heading">
+                <span class="section-tag">LIVE DEVELOPMENT</span>
+                <h1>Live Preview</h1>
+                <p>Lihat hasil gabungan HTML, CSS dan JavaScript.</p>
+            </div>
+
+            <div class="preview-toolbar">
+
+                <div class="preview-device">
+                    <button class="device-btn active" data-device="desktop">
+                        Desktop
+                    </button>
+
+                    <button class="device-btn" data-device="mobile">
+                        Mobile
+                    </button>
+                </div>
+
+                <button class="primary-button" id="refreshPreview">
+                    ↻ Refresh Preview
+                </button>
+
+            </div>
+
+            <div class="preview-container">
+                <iframe
+                    id="previewFrame"
+                    title="Website Preview"
+                    sandbox="allow-scripts"
+                ></iframe>
+            </div>
+
+        </section>
+
+        <!-- COMPONENTS -->
+        <section class="page" id="components">
+
+            <div class="page-heading">
+                <span class="section-tag">COMPONENT BUILDER</span>
+                <h1>Custom Components</h1>
+                <p>Atur tampilan komponen website secara manual.</p>
+            </div>
+
+            <div class="component-layout">
+
+                <div class="component-options">
+
+                    <h3>Component Settings</h3>
+
+                    <label for="componentType">Component Type</label>
+                    <select id="componentType">
+                        <option value="button">Button</option>
+                        <option value="card">Card</option>
+                        <option value="heading">Heading</option>
+                        <option value="badge">Badge</option>
+                    </select>
+
+                    <label for="componentText">Text Content</label>
+                    <input
+                        type="text"
+                        id="componentText"
+                        value="Click Me"
+                    >
+
+                    <label for="componentColor">Background Color</label>
+                    <input
+                        type="color"
+                        id="componentColor"
+                        value="#167c62"
+                    >
+
+                    <label for="componentRadius">Border Radius</label>
+                    <input
+                        type="range"
+                        id="componentRadius"
+                        min="0"
+                        max="50"
+                        value="10"
+                    >
+
+                    <label for="componentSize">Font Size</label>
+                    <input
+                        type="range"
+                        id="componentSize"
+                        min="10"
+                        max="40"
+                        value="16"
+                    >
+
+                    <button class="primary-button" id="generateComponent">
+                        Generate Component
+                    </button>
+
+                </div>
+
+                <div class="component-preview">
+
+                    <h3>Component Preview</h3>
+
+                    <div id="componentPreview">
+                        <button>Click Me</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- MY PROJECTS -->
+        <section class="page" id="projects">
+
+            <div class="page-heading">
+                <span class="section-tag">YOUR WORKSPACE</span>
+                <h1>My Projects</h1>
+                <p>Kelola semua proyek yang sudah kamu buat.</p>
+            </div>
+
+            <div class="projects-toolbar">
+                <input
+                    type="search"
+                    id="projectSearch"
+                    placeholder="Cari proyek..."
+                >
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+
+                <div class="empty-state">
+                    <span>▤</span>
+                    <h3>Belum ada proyek</h3>
+                    <p>Mulai membuat proyek pertamamu.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="page" id="settings">
+
+            <div class="page-heading">
+                <span class="section-tag">PREFERENCES</span>
+                <h1>Settings</h1>
+                <p>Pengaturan aplikasi SENWALLPROJECT.</p>
+            </div>
+
+            <div class="settings-card">
+
+                <h3>General Settings</h3>
+
+                <div class="setting-item">
+                    <div>
+                        <strong>Application Name</strong>
+                        <p>SENWALLPROJECT</p>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <strong>Storage System</strong>
+                        <p>LocalStorage Browser</p>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <strong>Internet Connection</strong>
+                        <p>Not required for core features</p>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <strong>Version</strong>
+                        <p>1.0.0</p>
+                    </div>
+                </div>
+
+                <button class="danger-button" id="clearData">
+                    Clear All Local Data
+                </button>
+
+            </div>
+
+            <div class="about-card">
+                <h2>SENWALLPROJECT</h2>
+                <p>
+                    A simple workspace for building websites
+                    with HTML, CSS and JavaScript.
+                </p>
+                <span>Created with SENW PROJECT</span>
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <span>© 2026 SENWALLPROJECT</span>
+            <span>Build Your Ideas.</span>
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification">
+    <span id="notificationMessage">Notification</span>
+</div>
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
